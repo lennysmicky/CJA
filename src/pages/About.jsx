@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { MdVisibility, MdFlag, MdLightbulb, MdFavorite, MdGroups, MdWorkspacePremium, MdArrowForward } from 'react-icons/md'
+import { FaLinkedinIn, FaTwitter, FaInstagram } from 'react-icons/fa'
 import SectionTitle from '../components/common/SectionTitle'
 import Button from '../components/common/Button'
 import Card from '../components/common/Card'
@@ -120,7 +121,7 @@ const About = () => {
         </div>
       </section>
 
-      {/* Team */}
+      {/* Team - AVEC RÉSEAUX SOCIAUX */}
       <section className="section-light">
         <div className="container-custom">
           <SectionTitle
@@ -139,7 +140,41 @@ const About = () => {
                 />
                 <h3 className="text-xl font-bold text-dark-700">{member.name}</h3>
                 <p className="text-primary-500 font-medium mb-3">{member.role}</p>
-                <p className="text-dark-400 text-sm">{member.bio}</p>
+                <p className="text-dark-400 text-sm mb-4">{member.bio}</p>
+                
+                {/* Liens sociaux */}
+                <div className="flex justify-center gap-3">
+                  {member.social?.linkedin && (
+                    <a 
+                      href={member.social.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-9 h-9 bg-light-300 rounded-lg flex items-center justify-center text-dark-400 hover:bg-primary-500 hover:text-white transition-all"
+                    >
+                      <FaLinkedinIn size={16} />
+                    </a>
+                  )}
+                  {member.social?.twitter && (
+                    <a 
+                      href={member.social.twitter}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-9 h-9 bg-light-300 rounded-lg flex items-center justify-center text-dark-400 hover:bg-primary-500 hover:text-white transition-all"
+                    >
+                      <FaTwitter size={16} />
+                    </a>
+                  )}
+                  {member.social?.instagram && (
+                    <a 
+                      href={member.social.instagram}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-9 h-9 bg-light-300 rounded-lg flex items-center justify-center text-dark-400 hover:bg-primary-500 hover:text-white transition-all"
+                    >
+                      <FaInstagram size={16} />
+                    </a>
+                  )}
+                </div>
               </Card>
             ))}
           </div>
