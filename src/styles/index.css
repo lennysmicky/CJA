@@ -1,0 +1,121 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #ffffff;
+  color: #1F2937;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F3F4F6;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #00B894;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #009676;
+}
+
+::selection {
+  background-color: #00B894;
+  color: white;
+}
+
+@layer components {
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 md:px-6 lg:px-8;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 
+           font-semibold rounded-xl transition-all duration-300;
+  }
+
+  .btn-primary {
+    @apply btn bg-primary-500 text-white 
+           hover:bg-primary-600 hover:shadow-primary hover:-translate-y-0.5;
+  }
+
+  .btn-secondary {
+    @apply btn border-2 border-primary-500 text-primary-500 bg-transparent
+           hover:bg-primary-500 hover:text-white;
+  }
+
+  .btn-white {
+    @apply btn bg-white text-primary-500 hover:bg-light-300;
+  }
+
+  .btn-dark {
+    @apply btn bg-dark-700 text-white hover:bg-dark-800;
+  }
+
+  .card {
+    @apply bg-white rounded-2xl p-6 shadow-soft hover:shadow-medium transition-all duration-300;
+  }
+
+  .card-hover {
+    @apply card hover:-translate-y-2 hover:shadow-strong;
+  }
+
+  .section {
+    @apply py-20 md:py-28 px-4 md:px-6 lg:px-8;
+  }
+
+  .section-dark {
+    @apply section bg-dark-700 text-white;
+  }
+
+  .section-light {
+    @apply section bg-light-300;
+  }
+
+  .section-primary {
+    @apply section bg-primary-500 text-white;
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary-500 to-primary-600 bg-clip-text text-transparent;
+  }
+
+  .badge-primary {
+    @apply inline-flex items-center px-4 py-1.5 rounded-full text-sm font-medium bg-primary-100 text-primary-600;
+  }
+
+  .input {
+    @apply w-full px-4 py-3 rounded-xl border border-light-400 
+           focus:border-primary-500 focus:ring-2 focus:ring-primary-100 
+           outline-none transition-all placeholder:text-dark-300;
+  }
+
+  .label {
+    @apply block text-sm font-medium text-dark-600 mb-2;
+  }
+}
+
+.hero-gradient {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e8faf5 50%, #d1f5eb 100%);
+}
