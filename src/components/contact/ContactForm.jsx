@@ -2,14 +2,16 @@ import { useState, useRef } from 'react'
 import { motion } from 'framer-motion'
 import { MdSend, MdCheckCircle } from 'react-icons/md'
 import { FaSpinner } from 'react-icons/fa'
+import emailjs from '@emailjs/browser'
 
 const ContactForm = () => {
   const formRef = useRef()
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [error, setError] = useState('')
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
+    from_name: '',
+    from_email: '',
     phone: '',
     subject: '',
     message: ''
@@ -20,31 +22,47 @@ const ContactForm = () => {
       ...formData,
       [e.target.name]: e.target.value
     })
+    setError('')
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
     setIsSubmitting(true)
+    setError('')
 
-    // Simulation d'envoi - Remplacer par EmailJS
-    // import emailjs from '@emailjs/browser'
-    // emailjs.sendForm('SERVICE_ID', 'TEMPLATE_ID', formRef.current, 'PUBLIC_KEY')
-    
-    setTimeout(() => {
-      setIsSubmitting(false)
+    try {
+      await emailjs.sendForm(
+        'service_2rdfoue',
+        'template_96lyfmc',
+        formRef.current,
+        'pUPkTYTfTbpc7-Fob'
+      )
+
       setIsSubmitted(true)
-      setFormData({ name: '', email: '', phone: '', subject: '', message: '' })
-      
+      setFormData({
+        from_name: '',
+        from_email: '',
+        phone: '',
+        subject: '',
+        message: ''
+      })
+
       setTimeout(() => setIsSubmitted(false), 5000)
-    }, 2000)
+
+    } catch (err) {
+      console.error('Erreur EmailJS:', err)
+      setError('Une erreur est survenue. Veuillez réessayer.')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const subjects = [
     { value: '', label: 'Sélectionnez un sujet' },
-    { value: 'devis', label: 'Demande de devis' },
-    { value: 'info', label: 'Demande d\'information' },
-    { value: 'partenariat', label: 'Partenariat' },
-    { value: 'autre', label: 'Autre' }
+    { value: 'Demande de devis', label: 'Demande de devis' },
+    { value: 'Demande d\'information', label: 'Demande d\'information' },
+    { value: 'Partenariat', label: 'Partenariat' },
+    { value: 'Autre', label: 'Autre' }
   ]
 
   return (
@@ -71,14 +89,24 @@ const ContactForm = () => {
         </motion.div>
       )}
 
+      {error && (
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="bg-red-50 border border-red-200 rounded-xl p-4 mb-6"
+        >
+          <p className="text-red-700">{error}</p>
+        </motion.div>
+      )}
+
       <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
         <div className="grid md:grid-cols-2 gap-6">
           <div>
             <label className="label">Nom complet *</label>
             <input
               type="text"
-              name="name"
-              value={formData.name}
+              name="from_name"
+              value={formData.from_name}
               onChange={handleChange}
               required
               className="input"
@@ -89,8 +117,8 @@ const ContactForm = () => {
             <label className="label">Email *</label>
             <input
               type="email"
-              name="email"
-              value={formData.email}
+              name="from_email"
+              value={formData.from_email}
               onChange={handleChange}
               required
               className="input"
