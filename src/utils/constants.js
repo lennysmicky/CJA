@@ -6,7 +6,7 @@ export const COMPANY_INFO = {
   phone: '+228 90 27 13 90',
   whatsapp: '+22890271390',
   address: 'Lomé, Togo',
-  social: {
+  social: { 
     facebook: 'https://facebook.com/people/Cja-LinK/61576300962792/',
     instagram: 'https://instagram.com/cjalink',
     linkedin: 'https://linkedin.com/in/cja-link-5a83ba38b/',
