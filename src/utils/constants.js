@@ -2,14 +2,14 @@ export const COMPANY_INFO = {
   name: 'CJA-Link',
   slogan: 'Faites parler votre marque !',
   description: 'Agence de communication créative et stratégique',
-  email: 'contact@cja-link.com',
-  phone: '+225 00 00 00 00',
-  whatsapp: '+22500000000',
-  address: 'Abidjan, Côte d\'Ivoire',
+  email: 'cjalink01@gmail.com',
+  phone: '+228 90 27 13 90',
+  whatsapp: '+22890271390',
+  address: 'Lomé, Togo',
   social: {
-    facebook: 'https://facebook.com/cjalink',
+    facebook: 'https://facebook.com/people/Cja-LinK/61576300962792/',
     instagram: 'https://instagram.com/cjalink',
-    linkedin: 'https://linkedin.com/company/cjalink',
+    linkedin: 'https://linkedin.com/in/cja-link-5a83ba38b/',
     twitter: 'https://twitter.com/cjalink'
   }
 }
