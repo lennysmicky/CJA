@@ -1,23 +1,67 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { 
   MdEmail, 
   MdPhone, 
   MdLocationOn,
-  MdArrowForward 
+  MdArrowForward,
+  MdCheckCircle
 } from 'react-icons/md'
 import { 
   FaFacebookF, 
   FaInstagram, 
   FaLinkedinIn, 
-  FaTwitter 
+  FaTwitter,
+  FaWhatsapp
 } from 'react-icons/fa'
+import emailjs from '@emailjs/browser'
 import { COMPANY_INFO, NAV_LINKS } from '../../utils/constants'
 import { services } from '../../data/services'
 
 const Footer = () => {
   const currentYear = new Date().getFullYear()
+  
+  // Newsletter state
+  const [newsletterEmail, setNewsletterEmail] = useState('')
+  const [isSubscribing, setIsSubscribing] = useState(false)
+  const [isSubscribed, setIsSubscribed] = useState(false)
+  const [subscribeError, setSubscribeError] = useState('')
+
+  const handleNewsletterSubmit = async (e) => {
+    e.preventDefault()
+    if (!newsletterEmail) return
+
+    setIsSubscribing(true)
+    setSubscribeError('')
+
+    try {
+      await emailjs.send(
+        'service_2rdfoue',
+        'template_96lyfmc',
+        {
+          from_name: 'Nouvel abonné Newsletter',
+          from_email: newsletterEmail,
+          phone: 'N/A',
+          subject: 'Inscription Newsletter',
+          message: `Nouvelle inscription à la newsletter !\n\nEmail: ${newsletterEmail}\n\nDate: ${new Date().toLocaleString('fr-FR')}`
+        },
+        'pUPkTYTfTbpc7-Fob'
+      )
+
+      setIsSubscribed(true)
+      setNewsletterEmail('')
+      setTimeout(() => setIsSubscribed(false), 5000)
+
+    } catch (error) {
+      console.error('Erreur newsletter:', error)
+      setSubscribeError('Erreur. Réessayez.')
+    } finally {
+      setIsSubscribing(false)
+    }
+  }
 
   const socialLinks = [
+    { icon: FaWhatsapp, href: `https://wa.me/${COMPANY_INFO.whatsapp}`, label: 'WhatsApp' },
     { icon: FaFacebookF, href: COMPANY_INFO.social.facebook, label: 'Facebook' },
     { icon: FaInstagram, href: COMPANY_INFO.social.instagram, label: 'Instagram' },
     { icon: FaLinkedinIn, href: COMPANY_INFO.social.linkedin, label: 'LinkedIn' },
@@ -127,22 +171,42 @@ const Footer = () => {
               </li>
             </ul>
 
-            {/* Newsletter */}
+            {/* Newsletter avec EmailJS */}
             <div className="mt-6">
               <h5 className="font-medium mb-3">Newsletter</h5>
-              <form className="flex">
-                <input
-                  type="email"
-                  placeholder="Votre email"
-                  className="flex-1 px-4 py-2 rounded-l-xl bg-dark-600 border border-dark-500 text-white placeholder:text-dark-400 focus:outline-none focus:border-primary-500"
-                />
-                <button
-                  type="submit"
-                  className="px-4 py-2 bg-primary-500 rounded-r-xl hover:bg-primary-600 transition-colors"
-                >
-                  <MdArrowForward size={20} />
-                </button>
-              </form>
+              
+              {isSubscribed ? (
+                <div className="flex items-center space-x-2 text-primary-400">
+                  <MdCheckCircle size={20} />
+                  <span className="text-sm">Merci pour votre inscription !</span>
+                </div>
+              ) : (
+                <form onSubmit={handleNewsletterSubmit} className="flex">
+                  <input
+                    type="email"
+                    value={newsletterEmail}
+                    onChange={(e) => setNewsletterEmail(e.target.value)}
+                    placeholder="Votre email"
+                    required
+                    className="flex-1 px-4 py-2 rounded-l-xl bg-dark-600 border border-dark-500 text-white placeholder:text-dark-400 focus:outline-none focus:border-primary-500"
+                  />
+                  <button
+                    type="submit"
+                    disabled={isSubscribing}
+                    className="px-4 py-2 bg-primary-500 rounded-r-xl hover:bg-primary-600 transition-colors disabled:opacity-50"
+                  >
+                    {isSubscribing ? (
+                      <span className="animate-spin">⏳</span>
+                    ) : (
+                      <MdArrowForward size={20} />
+                    )}
+                  </button>
+                </form>
+              )}
+              
+              {subscribeError && (
+                <p className="text-red-400 text-sm mt-2">{subscribeError}</p>
+              )}
             </div>
           </div>
         </div>
