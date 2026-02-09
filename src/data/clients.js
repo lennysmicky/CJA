@@ -4,6 +4,7 @@ import client2 from '../assets/images/clients/client2.png'
 
 
 export const clients = [
-  { id: 1, name: 'Entreprise 1', logo: client1 },
-  { id: 2, name: 'Entreprise 2', logo: client2 },
+  { id: 1, name: 'Saph', logo:client1 },
+  { id: 2, name: 'AcitCorp', logo:client2 },
+  
 ]
