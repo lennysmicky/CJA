@@ -1,18 +1,20 @@
 export const team = [
   {
     id: 1,
-    name: 'Jean-Claude Aka',
+    name: 'Apollinaire DOGBEGAN',
     role: 'Fondateur & Directeur',
-    image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=400&fit=crop',
+    image: 'https://drive.google.com/file/d/1GHvgakpTAAXpqlI0nofzwqE0b6UUm2Kn/view?usp=drive_link',
     bio: 'Expert en stratégie de communication avec plus de 10 ans d\'expérience.',
     social: {
       linkedin: '#',
-      twitter: '#'
+      twitter: '#',
+      facebook: '#',
+      whatsapp: '#'
     }
   },
   {
     id: 2,
-    name: 'Marie Coulibaly',
+    name: '',
     role: 'Directrice Créative',
     image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop',
     bio: 'Designer passionnée spécialisée en branding et identité visuelle.',
