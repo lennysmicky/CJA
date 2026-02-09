@@ -46,7 +46,7 @@ const Navbar = () => {
             {/* Logo avec contour qui suit la forme */}
             <Link to="/" className="flex items-center space-x-2 group">
               <img 
-                src="/logo.png" 
+                src="/lolo.png"
                 alt="CJA-Link" 
                 className="h-11 w-auto object-contain group-hover:scale-105 transition-transform"
                 style={{ filter: 'drop-shadow(0 0 1px #111827)' }}
