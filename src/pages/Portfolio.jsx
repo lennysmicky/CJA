@@ -5,6 +5,7 @@ import SectionTitle from '../components/common/SectionTitle'
 import Button from '../components/common/Button'
 import ProjectCard from '../components/portfolio/ProjectCard'
 import ProjectFilter from '../components/portfolio/ProjectFilter'
+import ClientsMarquee from '../components/portfolio/ClientsMarquee'  // NOUVEAU
 import { projects, categories } from '../data/projects'
 
 const Portfolio = () => {
@@ -57,30 +58,18 @@ const Portfolio = () => {
         </div>
       </section>
 
-      {/* Clients Section */}
-      <section className="section-light">
+      {/* Clients Section - NOUVELLE VERSION */}
+      <section className="section-light overflow-hidden">
         <div className="container-custom">
           <SectionTitle
             badge="Ils nous font confiance"
             title="Nos clients"
-            subtitle="Des entreprises de tous secteurs nous font confiance"
+            subtitle="Des entreprises de tous secteurs nous font confiance pour leurs projets digitaux"
           />
-
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
-            {[1, 2, 3, 4, 5, 6].map((_, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="bg-white rounded-xl p-6 flex items-center justify-center h-24 shadow-soft hover:shadow-medium transition-shadow"
-              >
-                <div className="text-xl font-bold text-dark-200">Logo</div>
-              </motion.div>
-            ))}
-          </div>
         </div>
+        
+        {/* Animation défilante pleine largeur */}
+        <ClientsMarquee />
       </section>
 
       {/* CTA */}

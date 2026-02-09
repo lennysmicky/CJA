@@ -3,13 +3,13 @@ export const team = [
     id: 1,
     name: 'Apollinaire DOGBEGAN',
     role: 'Fondateur & Directeur',
-    image: 'https://drive.google.com/file/d/1GHvgakpTAAXpqlI0nofzwqE0b6UUm2Kn/view?usp=drive_link',
-    bio: 'Expert en stratégie de communication avec plus de 10 ans d\'expérience.',
+    image: 'images/team/apollinaire.jpg',
+    bio: 'Expert en stratégie de communication avec plus de 5 années d\'expérience.',
     social: {
       linkedin: '#',
       twitter: '#',
       facebook: '#',
-      whatsapp: '#'
+      whatsapp: 'https://wa.me/+22890271390'
     }
   },
   {
@@ -32,6 +32,31 @@ export const team = [
     social: {
       linkedin: '#',
       twitter: '#'
+    },
+  },
+  {
+    id: 4,
+    name: 'Oumar Sanogo',
+    role: 'Directeur Digital',
+    image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=400&fit=crop',
+    bio: 'Expert en marketing digital et développement web.',
+    social: {
+      linkedin: '#',
+      twitter: '#'
+    },
+  },
+  {
+    id: 5,
+    name: 'kossi Michael ZODJEKPO',
+    role: 'Responsable IT & Développement',
+    image: 'images/team/kossi.png',
+    bio: 'Je transforme vos idées en solutions web/mobile performantes : développement, déploiement et suivi, avec une IT solide pour assurer stabilité et sécurité.',
+    social: {
+      linkedin: 'https://www.linkedin.com/in/kossi-michael-zodjekpo/',
+      twitter: '#',
+      github:'https://github.com/lennysmicky',
+      facebook: '#',
+      whatsapp:'https://wa.me/22871647018'
     },
   }
 ]

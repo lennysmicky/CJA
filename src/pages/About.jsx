@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { MdVisibility, MdFlag, MdLightbulb, MdFavorite, MdGroups, MdWorkspacePremium, MdArrowForward } from 'react-icons/md'
-import { FaLinkedinIn, FaTwitter, FaInstagram, FaWhatsapp, FaFacebook } from 'react-icons/fa'
+import { FaLinkedinIn, FaTwitter, FaInstagram, FaWhatsapp, FaFacebook, FaGithub } from 'react-icons/fa'
 import SectionTitle from '../components/common/SectionTitle'
 import Button from '../components/common/Button'
 import Card from '../components/common/Card'
@@ -122,7 +122,7 @@ const About = () => {
       </section>
 
       {/* Team - AVEC RÉSEAUX SOCIAUX */}
-      {/*<section className="section-light">
+      <section className="section-light">
         <div className="container-custom">
           <SectionTitle
             badge="Notre Équipe"
@@ -143,7 +143,7 @@ const About = () => {
                 <p className="text-dark-400 text-sm mb-4">{member.bio}</p>
                 
                 {/* Liens sociaux */}
-               {/* <div className="flex justify-center gap-3">
+                <div className="flex justify-center gap-3">
                   {member.social?.linkedin && (
                     <a 
                       href={member.social.linkedin}
@@ -182,6 +182,16 @@ const About = () => {
                       className="w-9 h-9 bg-light-300 rounded-lg flex items-center justify-center text-dark-400 hover:bg-primary-500 hover:text-white transition-all"
                     >
                       <FaFacebook size={16} />
+                    </a>
+                  )}
+                  {member.social?.github && (
+                    <a
+                     href={member.social.github}
+                     target="_blank"
+                     rel="nooper noreferrer"
+                     className="w-9 h-9 bg-light-300 rounded-lg flex items-center justify-center text-dark-400 hover:bg-primary-500 hover:text-white transition-all"
+                     >
+                      <FaGithub size={16} />
                     </a>
                   )}
                   {member.social?.whatsapp && (
