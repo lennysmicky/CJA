@@ -122,7 +122,7 @@ const About = () => {
       </section>
 
       {/* Team - AVEC RÉSEAUX SOCIAUX */}
-      <section className="section-light">
+      {/* <section className="section-light">
         <div className="container-custom">
           <SectionTitle
             badge="Notre Équipe"
@@ -142,7 +142,7 @@ const About = () => {
                 <p className="text-primary-500 font-medium mb-3">{member.role}</p>
                 <p className="text-dark-400 text-sm mb-4">{member.bio}</p>
                 
-                {/* Liens sociaux */}
+                 Liens sociaux 
                 <div className="flex justify-center gap-3">
                   {member.social?.linkedin && (
                     <a 
@@ -209,7 +209,7 @@ const About = () => {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* CTA */}
       <section className="section-primary">
